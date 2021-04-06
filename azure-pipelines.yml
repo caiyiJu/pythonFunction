@@ -22,4 +22,4 @@ steps:
     script: 'az login --service-principal --username "7efc50cc-f18d-402b-bcf3-5f5dd3f4197d" --password "3d.A1w_bzOwPF7x~JL~18XZOK~Qb..84.f" --tenant "e4c9ab4e-bd27-40d5-8459-230ba2a757fb"'
 - task: CmdLine@2
   inputs:
-    script: 'func azure functionapp publish tonypythonfunc'
+    script: 'sudo apt-get install azure-functions-core-tools-3'
