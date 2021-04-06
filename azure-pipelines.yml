@@ -1,0 +1,22 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
+- task: CmdLine@2
+  inputs:
+    script: 'az login --service-principal --username "7efc50cc-f18d-402b-bcf3-5f5dd3f4197d" --password "3d.A1w_bzOwPF7x~JL~18XZOK~Qb..84.f" --tenant "e4c9ab4e-bd27-40d5-8459-230ba2a757fb"'
