@@ -23,3 +23,6 @@ steps:
 - task: CmdLine@2
   inputs:
     script: 'sudo apt-get install azure-functions-core-tools-3'
+- task: CmdLine@2
+  inputs:
+    script: 'func azure functionapp publish tonypythonfunc'
