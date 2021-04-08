@@ -13,6 +13,16 @@ steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      for (( i=0; i<10; ++i));
+      do
+        # Echoes in Red
+        echo "Waiting 1 minute and trying again..."
+        sleep 1m
+      done
 - script: |
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
@@ -27,20 +37,5 @@ steps:
   inputs:
     script: 'func azure functionapp publish tonypythonfunc --python'
   
-- task: Bash@3
-  inputs:
-    targetType: 'inline'
-    script: |
-      for (( i = 0; [$? != 0] && [$i < 10]; i++ ))
-      do
-        # Echoes in Red
-        echo -e "\e[31mFailed. Waiting 1 minute and trying again...\e[0m"
-        sleep 1m
-        func azure functionapp publish tonypythonfunc --python
-      done
+
       
-      if [[ $? != 0 ]]
-      then
-        echo "Too many failures while trying to deploy $app"
-        exit 1
-      fi
